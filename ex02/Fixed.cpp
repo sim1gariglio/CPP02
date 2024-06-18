@@ -6,7 +6,7 @@
 /*   By: sgarigli <sgarigli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 10:41:06 by sgarigli          #+#    #+#             */
-/*   Updated: 2024/06/18 09:37:55 by sgarigli         ###   ########.fr       */
+/*   Updated: 2024/06/18 09:38:43 by sgarigli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,4 +76,98 @@ int Fixed::toInt(void) const
 	return (this->_value >> Fixed::_bits);
 }
 
+Fixed Fixed::operator+(const Fixed &rhs) const
+{
+	return Fixed(this->toFloat() + rhs.toFloat());
+}
 
+Fixed Fixed::operator-(const Fixed &rhs) const
+{
+	return Fixed(this->toFloat() - rhs.toFloat());
+}
+
+Fixed Fixed::operator*(const Fixed &rhs) const
+{
+	return Fixed(this->toFloat() * rhs.toFloat());
+}
+
+Fixed Fixed::operator/(const Fixed &rhs) const
+{
+	return Fixed(this->toFloat() / rhs.toFloat());
+}
+
+bool Fixed::operator>(const Fixed &rhs) const
+{
+	return this->toFloat() > rhs.toFloat();
+}
+
+bool Fixed::operator<(const Fixed &rhs) const
+{
+	return this->toFloat() < rhs.toFloat();
+}
+
+bool Fixed::operator>=(const Fixed &rhs) const
+{
+	return this->toFloat() >= rhs.toFloat();
+}
+
+bool Fixed::operator<=(const Fixed &rhs) const
+{
+	return this->toFloat() <= rhs.toFloat();
+}
+
+bool Fixed::operator==(const Fixed &rhs) const
+{
+	return this->toFloat() == rhs.toFloat();
+}
+
+bool Fixed::operator!=(const Fixed &rhs) const
+{
+	return this->toFloat() != rhs.toFloat();
+}
+
+Fixed Fixed::operator++(int) //postfix
+{
+	Fixed tmp(*this);
+	this->_value++;
+	return tmp;
+}
+
+Fixed &Fixed::operator++() //prefix
+{
+	this->_value++;
+	return *this;
+}
+
+Fixed Fixed::operator--(int) //postfix
+{
+	Fixed tmp(*this);
+	this->_value--;
+	return tmp;
+}
+
+Fixed &Fixed::operator--() //prefix
+{
+	this->_value--;
+	return *this;
+}
+
+Fixed &Fixed::min(Fixed &a, Fixed &b)
+{
+	return (a < b) ? a : b;
+}
+
+Fixed &Fixed::max(Fixed &a, Fixed &b)
+{
+	return (a > b) ? a : b;
+}
+
+const Fixed &Fixed::min(const Fixed &a, const Fixed &b)
+{
+	return (a < b) ? a : b;
+}
+
+const Fixed &Fixed::max(const Fixed &a, const Fixed &b)
+{
+	return (a > b) ? a : b;
+}
