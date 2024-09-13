@@ -6,7 +6,7 @@
 /*   By: sgarigli <sgarigli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 10:13:17 by sgarigli          #+#    #+#             */
-/*   Updated: 2024/06/19 10:31:18 by sgarigli         ###   ########.fr       */
+/*   Updated: 2024/09/13 09:25:43 by sgarigli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 Point::Point() : _x(0), _y(0)
 {
+	// std::cout << "Default constructor called" << std::endl;
 }
 
 Point::Point(float const x, float const y) : _x(x), _y(y)
@@ -36,6 +37,7 @@ Point &Point::operator=(const Point &rhs)
 
 Point::~Point()
 {
+	// std::cout << "Destructor called" << std::endl;
 }
 
 Fixed Point::getX() const
